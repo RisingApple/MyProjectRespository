@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.system.wms.dao.OutListMapper">
+  <resultMap id="BaseResultMap" type="com.system.wms.pojo.OutList">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="staff_id" jdbcType="INTEGER" property="staffId" />
+    <result column="sendee_name" jdbcType="VARCHAR" property="sendeeName" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+    <result column="detail" jdbcType="VARCHAR" property="detail" />
+  </resultMap>
+  <resultMap type="com.system.wms.pojo.OutList" extends="BaseResultMap" id="ResultForStaff">
+  	<association property="staff" resultMap="com.system.wms.dao.StaffMapper.BaseResultMap"/>
+  </resultMap>
+  <resultMap type="com.system.wms.pojo.OutList" extends="BaseResultMap" id="ResultForOutMessage">
+  	<collection property="outMessages" resultMap="com.system.wms.dao.OutMessageMapper.BaseResultMap"/>
+  </resultMap>
+  
+  <select id="selectById" resultMap="ResultForStaff" parameterType="java.lang.Integer">
+  	select * from out_list
+  </select>
+</mapper>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	
+
+  <context id="DB2Tables" targetRuntime="MyBatis3">
+  	
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+        connectionURL="jdbc:mysql://localhost:3306/wms?characterEncoding=utf-8"
+        userId="root"
+        password="123456">
+    </jdbcConnection>
+
+    <javaTypeResolver >
+      <property name="forceBigDecimals" value="false" />
+    </javaTypeResolver>
+
+    <javaModelGenerator targetPackage="com.system.wms.pojo" targetProject=".\src\main\java">
+      <property name="enableSubPackages" value="true" />
+      <property name="trimStrings" value="true" />
+    </javaModelGenerator>
+
+    <sqlMapGenerator targetPackage="mapper"  targetProject=".\src\main\resources">
+      <property name="enableSubPackages" value="true" />
+    </sqlMapGenerator>
+	
+    <javaClientGenerator type="XMLMAPPER" targetPackage="com.system.wms.dao"  targetProject=".\src\main\java">
+      <property name="enableSubPackages" value="true" />
+    </javaClientGenerator>
+
+    <table tableName="staff" domainObjectName="Staff"></table>
+	<table tableName="administrator" domainObjectName="Administrator"></table>
+	<table tableName="in_list" domainObjectName="InList"></table>
+	<table tableName="in_message" domainObjectName="InMessage"></table>
+	<table tableName="inventory" domainObjectName="Inventory"></table>
+	<table tableName="lost_report" domainObjectName="LostReport"></table>
+	<table tableName="out_list" domainObjectName="OutList"></table>
+	<table tableName="out_message" domainObjectName="OutMessage"></table>
+	<table tableName="goods" domainObjectName="Goods"></table>
+  </context>
+</generatorConfiguration>
